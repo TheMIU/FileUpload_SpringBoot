@@ -1,7 +1,6 @@
 const fileInput = document.getElementById('fileInput');
 const previewImage = document.getElementById('preview');
 const uploadedImage = document.getElementById('uploadedImage');
-const progressBar = document.getElementById('progressBar');
 
 fileInput.addEventListener('change', function () {
     const file = fileInput.files[0];
@@ -19,10 +18,11 @@ fileInput.addEventListener('change', function () {
         reader.readAsDataURL(file);
 
         // Reset the progress bar
-        progressBar.value = 0;
+        $('#progressBar').val(0);
     }
 
     if (!file) {
+        $('#progressBar').val(0);
         previewImage.style.display = 'none';
         uploadedImage.style.display = 'none';
     }
@@ -32,6 +32,12 @@ $(document).ready(function () {
     $('#fileUploadForm').submit(function (e) {
         e.preventDefault();
         const formData = new FormData(this);
+
+        if (fileInput.files.length === 0) {
+            alert('Please select a file before uploading.');
+            return; // Don't proceed with the upload if no file is selected
+        }
+        
         $.ajax({
             url: '/file-upload/upload',
             type: 'POST',
@@ -41,9 +47,12 @@ $(document).ready(function () {
             xhr: function () {
                 const xhr = new window.XMLHttpRequest();
                 xhr.upload.addEventListener("progress", function (evt) {
+                    console.log(evt)
                     if (evt.lengthComputable) {
                         const percentComplete = (evt.loaded / evt.total) * 100;
                         $('#progressBar').val(percentComplete);
+                    }else {
+                        $('#progressBar').val(0);
                     }
                 }, false);
                 return xhr;
