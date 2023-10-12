@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
 </head>
 <body>
 <h1>test</h1>
+
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" id="fileInput">
+    <progress value="0" max="100" id="progressBar"></progress>
+    <button type="submit">Upload</button>
+</form>
+
+<script src="javascript.js"></script>
 </body>
 </html>
