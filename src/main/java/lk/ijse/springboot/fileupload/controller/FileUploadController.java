@@ -25,20 +25,14 @@ public class FileUploadController {
     @Autowired
     private FileUploadService service;
 
-    @Value("${file.upload.path}") // Get the file upload path from properties/configuration
+    @Value("${file.upload.path}")
     private String fileUploadPath;
-
-  /*  @PostMapping("/upload")
-    public void uploadFile(@RequestParam MultipartFile file) throws IOException {
-        System.out.println("upload invoked");
-        service.uploadFile(file);
-    }*/
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadFile(@RequestParam MultipartFile file) throws IOException {
         try {
             String originalFilename = file.getOriginalFilename();
-            String filePath = fileUploadPath + File.separator + originalFilename;
+            String filePath = fileUploadPath + originalFilename;
             System.out.println(filePath);
             service.uploadFile(file); // Save the file with the specified path
             return ResponseEntity.ok(filePath); // Return the file path in the response

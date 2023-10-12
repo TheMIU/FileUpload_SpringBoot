@@ -14,6 +14,7 @@ fileInput.addEventListener('change', function () {
         const reader = new FileReader();
         reader.onload = function (e) {
             previewImage.style.display = 'block';
+            uploadedImage.style.display = 'none';
             previewImage.src = e.target.result;
         };
         reader.readAsDataURL(file);
@@ -61,7 +62,6 @@ $(document).ready(function () {
             success: function (response) {
                 $('#progressBar').val(100);
                 alert("Upload success " + response);
-                /* const imageUrl = '/file-upload/uploads/' + response;*/
                 const imageUrl = '/file-upload/upload/'+filename;
                 $('#uploadedImage').attr('src', imageUrl);
                 $('#uploadedImage').show(); // Show the uploaded image
