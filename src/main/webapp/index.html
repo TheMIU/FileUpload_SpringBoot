@@ -8,12 +8,13 @@
 <body>
 <h1>test</h1>
 
-<form action="/upload" method="POST" enctype="multipart/form-data">
-    <input type="file" name="file" id="fileInput">
+<form action="/file-upload/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" id="fileInput" name="file">
     <progress value="0" max="100" id="progressBar"></progress>
     <button type="submit">Upload</button>
 </form>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="javascript.js"></script>
 </body>
 </html>
