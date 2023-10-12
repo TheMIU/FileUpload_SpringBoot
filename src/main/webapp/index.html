@@ -8,11 +8,14 @@
 <body>
 <h1>test</h1>
 
-<form action="/file-upload/upload" method="POST" enctype="multipart/form-data">
-    <input type="file" id="fileInput" name="file">
-    <progress value="0" max="100" id="progressBar"></progress>
-    <button type="submit">Upload</button>
+<form id="fileUploadForm" action="/file-upload/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" id="fileInput">
+    <input type="submit" value="Upload">
 </form>
+
+<progress value="0" max="100" id="progressBar"></progress>
+<img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 300px; display: none;">
+<img id="preview" src="" alt="Image Preview" style="max-width: 300px; display: none;">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="javascript.js"></script>
