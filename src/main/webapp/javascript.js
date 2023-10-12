@@ -1,13 +1,14 @@
 const fileInput = document.getElementById('fileInput');
 const previewImage = document.getElementById('preview');
 const uploadedImage = document.getElementById('uploadedImage');
+let filename;
 
 fileInput.addEventListener('change', function () {
     const file = fileInput.files[0];
-
     if (file) {
         console.log(file);
-        console.log('Selected file: ' + file.name);
+        filename = file.name
+        console.log('Selected file: ' + filename);
 
         // Read the selected file and display it in the preview
         const reader = new FileReader();
@@ -37,7 +38,7 @@ $(document).ready(function () {
             alert('Please select a file before uploading.');
             return; // Don't proceed with the upload if no file is selected
         }
-        
+
         $.ajax({
             url: '/file-upload/upload',
             type: 'POST',
@@ -51,16 +52,19 @@ $(document).ready(function () {
                     if (evt.lengthComputable) {
                         const percentComplete = (evt.loaded / evt.total) * 100;
                         $('#progressBar').val(percentComplete);
-                    }else {
+                    } else {
                         $('#progressBar').val(0);
                     }
                 }, false);
                 return xhr;
             },
             success: function (response) {
-                $('#progressBar').val(100); // Set the progress bar to 100% after completion
-                alert("Upload success");
-                uploadedImage.style.display = 'block';
+                $('#progressBar').val(100);
+                alert("Upload success " + response);
+                /* const imageUrl = '/file-upload/uploads/' + response;*/
+                const imageUrl = '/file-upload/upload/'+filename;
+                $('#uploadedImage').attr('src', imageUrl);
+                $('#uploadedImage').show(); // Show the uploaded image
             },
             error: function (error) {
                 alert("Upload failed " + error.responseText);
