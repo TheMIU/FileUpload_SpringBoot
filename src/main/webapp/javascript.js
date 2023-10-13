@@ -4,6 +4,7 @@ const uploadedImage = document.getElementById('uploadedImage');
 let filename;
 
 fileInput.addEventListener('change', function () {
+
     const file = fileInput.files[0];
     if (file) {
         console.log(file);
@@ -61,7 +62,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 $('#progressBar').val(100);
-                alert("Upload success " + response);
+              //  console.log("Upload success " + response)
                 const imageUrl = '/file-upload/upload/'+filename;
                 $('#uploadedImage').attr('src', imageUrl);
                 $('#uploadedImage').show(); // Show the uploaded image
@@ -72,25 +73,3 @@ $(document).ready(function () {
         });
     });
 });
-
-
-/*
-$(document).ready(function () {
-    $('#fileUploadForm').submit(function (e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        $.ajax({
-            url: '/file-upload/upload',
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-                alert("Upload success " + response);
-            },
-            error: function (error) {
-                alert("Upload failed " + error.responseText);
-            }
-        });
-    });
-});*/
