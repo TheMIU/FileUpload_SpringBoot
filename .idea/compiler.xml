@@ -6,12 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="FileUpload_SpringBoot" />
+        <module name="Backend" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="FileUpload_SpringBoot" target="8" />
+      <module name="FileUploadBackend" target="8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Backend" options="-parameters" />
+      <module name="FileUploadBackend" options="-parameters" />
       <module name="FileUpload_SpringBoot" options="-parameters" />
     </option>
   </component>

@@ -1,6 +1,8 @@
 const fileInput = document.getElementById('fileInput');
 const previewImage = document.getElementById('preview');
 const uploadedImage = document.getElementById('uploadedImage');
+const baseURL = "http://localhost:8080/"
+
 let filename;
 
 fileInput.addEventListener('change', function () {
@@ -42,7 +44,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: '/file-upload/upload',
+            url: baseURL + 'file-upload/upload',
             type: 'POST',
             data: formData,
             processData: false,
@@ -62,8 +64,8 @@ $(document).ready(function () {
             },
             success: function (response) {
                 $('#progressBar').val(100);
-              //  console.log("Upload success " + response)
-                const imageUrl = '/file-upload/upload/'+filename;
+                //  console.log("Upload success " + response)
+                const imageUrl = baseURL + 'file-upload/upload/' + filename;
                 $('#uploadedImage').attr('src', imageUrl);
                 $('#uploadedImage').show(); // Show the uploaded image
             },
