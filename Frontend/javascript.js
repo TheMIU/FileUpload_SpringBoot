@@ -1,9 +1,10 @@
 const fileInput = document.getElementById('fileInput');
 const previewImage = document.getElementById('preview');
-const uploadedImage = document.getElementById('uploadedImage');
-const baseURL = "http://localhost:8080/"
-
+/*const uploadedImage = document.getElementById('uploadedImage');*/
+let baseURL = "http://localhost:8080/"
 let filename;
+
+loadAndDisplayImages();
 
 fileInput.addEventListener('change', function () {
 
@@ -17,7 +18,7 @@ fileInput.addEventListener('change', function () {
         const reader = new FileReader();
         reader.onload = function (e) {
             previewImage.style.display = 'block';
-            uploadedImage.style.display = 'none';
+            /*  uploadedImage.style.display = 'none';*/
             previewImage.src = e.target.result;
         };
         reader.readAsDataURL(file);
@@ -29,7 +30,7 @@ fileInput.addEventListener('change', function () {
     if (!file) {
         $('#progressBar').val(0);
         previewImage.style.display = 'none';
-        uploadedImage.style.display = 'none';
+        /*  uploadedImage.style.display = 'none';*/
     }
 });
 
@@ -64,14 +65,45 @@ $(document).ready(function () {
             },
             success: function (response) {
                 $('#progressBar').val(100);
-                //  console.log("Upload success " + response)
-                const imageUrl = baseURL + 'file-upload/upload/' + filename;
-                $('#uploadedImage').attr('src', imageUrl);
-                $('#uploadedImage').show(); // Show the uploaded image
+
+                loadAndDisplayImages();
+                /*  const imageUrl = baseURL + 'file-upload/upload/' + filename;
+                  $('#uploadedImage').attr('src', imageUrl);
+                  $('#uploadedImage').show(); // Show the uploaded image*/
             },
             error: function (error) {
                 alert("Upload failed " + error.responseText);
             }
         });
+
+
+
     });
 });
+
+// Function to load and display images
+function loadAndDisplayImages() {
+    $.ajax({
+        url: baseURL + 'file-upload/list-images',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            const imageTable = $('#image-table');
+            imageTable.empty();
+            data.forEach(function (image, index) {
+                const newRow = `
+                        <tr>
+                            <th scope="row">${index + 1}</th>
+                            <td>${image.name}</td>
+                            <td><img src= "http://localhost:8080/file-upload/upload/${image.name}" alt="Image" style="max-width: 100px;"></td>
+                        </tr>
+                    `;
+
+                imageTable.append(newRow);
+            });
+        },
+        error: function (error) {
+            alert("Failed to load images: " + error.responseText);
+        }
+    });
+}

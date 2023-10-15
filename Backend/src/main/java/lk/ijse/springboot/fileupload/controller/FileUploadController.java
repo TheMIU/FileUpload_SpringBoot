@@ -1,5 +1,6 @@
 package lk.ijse.springboot.fileupload.controller;
 
+import lk.ijse.springboot.fileupload.ImageInfo;
 import lk.ijse.springboot.fileupload.service.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +16,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -39,6 +42,7 @@ public class FileUploadController {
         }
     }
 
+
     @GetMapping("/upload/{filename:.+}")
     public ResponseEntity<Resource> getImage(@PathVariable String filename) {
         System.out.println("invoked get");
@@ -55,6 +59,31 @@ public class FileUploadController {
             e.printStackTrace();
         }
         return ResponseEntity.notFound().build();
+    }
+
+
+    @GetMapping("/list-images")
+    public ResponseEntity<List<ImageInfo>> listImages() {
+        System.out.println("invoked");
+
+        List<ImageInfo> images = new ArrayList<>();
+
+        try {
+            // List all files in the uploads directory
+            Files.list(Paths.get(fileUploadPath))
+                    .filter(Files::isRegularFile) // Filter out directories
+                    .forEach(file -> {
+                        String filePath = file.toAbsolutePath().toString();
+                        System.out.println(filePath);
+                        ImageInfo image = new ImageInfo(file.getFileName().toString(), filePath);
+                        images.add(image);
+                    });
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(images);
     }
 
 }
