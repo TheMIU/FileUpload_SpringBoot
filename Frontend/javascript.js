@@ -1,36 +1,39 @@
 const fileInput = document.getElementById('fileInput');
 const previewImage = document.getElementById('preview');
-/*const uploadedImage = document.getElementById('uploadedImage');*/
 let baseURL = "http://localhost:8080/"
 let filename;
 
 loadAndDisplayImages();
 
-fileInput.addEventListener('change', function () {
+resetForm();
 
+function resetForm(){
+    fileInput.value = '';
+    previewImage.style.display = 'none';
+    $('#progressBar').width(0);
+    $('#progress-div').hide();
+}
+
+// event listener to check if file selected using event listener
+fileInput.addEventListener('change', function () {
     const file = fileInput.files[0];
     if (file) {
         console.log(file);
         filename = file.name
         console.log('Selected file: ' + filename);
 
-        // Read the selected file and display it in the preview
+        // Read the selected file and display it in the preview, show progress bar
         const reader = new FileReader();
         reader.onload = function (e) {
             previewImage.style.display = 'block';
-            /*  uploadedImage.style.display = 'none';*/
             previewImage.src = e.target.result;
+            $('#progress-div').show();
         };
         reader.readAsDataURL(file);
-
-        // Reset the progress bar
-        $('#progressBar').val(0);
     }
 
     if (!file) {
-        $('#progressBar').val(0);
-        previewImage.style.display = 'none';
-        /*  uploadedImage.style.display = 'none';*/
+        resetForm();
     }
 });
 
@@ -56,28 +59,21 @@ $(document).ready(function () {
                     console.log(evt)
                     if (evt.lengthComputable) {
                         const percentComplete = (evt.loaded / evt.total) * 100;
-                        $('#progressBar').val(percentComplete);
-                    } else {
-                        $('#progressBar').val(0);
+                        $('#progressBar').width(percentComplete + '%'); // Update the progress bar
                     }
                 }, false);
                 return xhr;
             },
-            success: function (response) {
-                $('#progressBar').val(100);
-
+            success: function () {
                 loadAndDisplayImages();
-                /*  const imageUrl = baseURL + 'file-upload/upload/' + filename;
-                  $('#uploadedImage').attr('src', imageUrl);
-                  $('#uploadedImage').show(); // Show the uploaded image*/
+                alert("Done !");
+                resetForm();
             },
             error: function (error) {
                 alert("Upload failed " + error.responseText);
+                resetForm();
             }
         });
-
-
-
     });
 });
 

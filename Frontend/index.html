@@ -10,15 +10,31 @@
 <body>
 <div class="container mt-5">
     <div class="row">
+        <!-- Left Column -->
         <div class="col-md-6">
-            <form id="fileUploadForm" method="post" enctype="multipart/form-data">
-                <input type="file" name="file" id="fileInput">
-                <input type="submit" value="Upload">
+            <form  id="fileUploadForm" method="post" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <div class="col-sm-9">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="file" id="fileInput">
+                            <label class="custom-file-label" for="fileInput">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload</button>
             </form>
 
-            <progress value="0" max="100" id="progressBar"></progress>
-            <img id="preview" src="" alt="Image Preview" style="max-width: 300px; display: none;">
+            <div class="mt-3" id="progress-div">
+                <img id="preview" src="" alt="Image Preview" class="img-fluid"
+                     style="display: none; margin-bottom: 10px">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
+                         aria-valuemax="100" id="progressBar"></div>
+                </div>
+            </div>
         </div>
+
+        <!-- Right Column -->
         <div class="col-md-6">
             <table class="table table-bordered">
                 <thead class="thead-dark">
@@ -29,16 +45,13 @@
                 </tr>
                 </thead>
                 <tbody id="image-table">
-                <!--<tr>
-                    <th scope="row">1</th>
-                    <td>sample1</td>
-                    <td><img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100px; display: none;"></td>
-                </tr>-->
+
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
