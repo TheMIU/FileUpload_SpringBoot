@@ -1,8 +1,6 @@
 package lk.ijse.springboot.fileupload.controller;
 
 import lk.ijse.springboot.fileupload.ImageInfo;
-import lk.ijse.springboot.fileupload.service.FileUploadService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -12,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,11 +22,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/file-upload")
 public class FileUploadController {
-    @Autowired
-    private FileUploadService service;
-
-    @Value("${file.upload.path}")
-    private String fileUploadPath;
+    private final String fileUploadPath = "F:\\\\GitHub MY\\\\FileUpload_SpringBoot\\\\uploads\\\\";
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadFile(@RequestParam MultipartFile file) throws IOException {
@@ -35,7 +30,7 @@ public class FileUploadController {
             String originalFilename = file.getOriginalFilename();
             String filePath = fileUploadPath + originalFilename;
             System.out.println(filePath);
-            service.uploadFile(file); // Save the file with the specified path
+            file.transferTo(new File(fileUploadPath + file.getOriginalFilename()));// Save the file with the specified path
             return ResponseEntity.ok(filePath); // Return the file path in the response
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Upload failed: " + e.getMessage());

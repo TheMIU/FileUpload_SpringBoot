@@ -37,6 +37,7 @@ fileInput.addEventListener('change', function () {
     }
 });
 
+// upload file
 $(document).ready(function () {
     $('#fileUploadForm').submit(function (e) {
         e.preventDefault();
@@ -53,7 +54,10 @@ $(document).ready(function () {
             data: formData,
             processData: false,
             contentType: false,
+
             xhr: function () {
+                // manage and monitor the progress of a file upload when making an asynchronous HTTP request to a server,
+                // enabling real-time updates of the progress, such as for updating a progress bar
                 const xhr = new window.XMLHttpRequest();
                 xhr.upload.addEventListener("progress", function (evt) {
                     console.log(evt)

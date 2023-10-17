@@ -1,0 +1,81 @@
+<mxfile host="app.diagrams.net" modified="2023-10-17T09:03:29.328Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" etag="XpEc4fPBh-uCzbYQH3EB" version="22.0.4" type="device">
+  <diagram name="Page-1" id="sm68INxK4wdz_gyH6aiW">
+    <mxGraphModel dx="1008" dy="667" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-1" value="Frontend" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="20" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-2" value="Backend" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="20" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="LzYgS3tawF_YMq9uNMIg-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="160" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-3" value="Upload image" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="LzYgS3tawF_YMq9uNMIg-3" target="LzYgS3tawF_YMq9uNMIg-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490" y="160" as="targetPoint" />
+            <mxPoint x="180" y="160" as="sourcePoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-6" value="Formdata" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="143" width="68" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-11" value="&lt;pre style=&quot;background-color:#2b2b2b;color:#a9b7c6;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:9.8pt;&quot;&gt;&lt;span style=&quot;color:#bbb529;&quot;&gt;@PostMapping&lt;/span&gt;(&lt;span style=&quot;color:#6a8759;&quot;&gt;&quot;/upload&quot;&lt;/span&gt;)&lt;br&gt;&lt;span style=&quot;color:#cc7832;&quot;&gt;public &lt;/span&gt;ResponseEntity&amp;lt;String&amp;gt; &lt;span style=&quot;color:#ffc66d;&quot;&gt;uploadFile&lt;/span&gt;(&lt;span style=&quot;color:#bbb529;&quot;&gt;@RequestParam &lt;/span&gt;MultipartFile file)&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="130" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-14" value="Show table" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-15" value="img&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="86" y="312" width="68" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-16" value="JSON array" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="253" width="68" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="LzYgS3tawF_YMq9uNMIg-16" target="LzYgS3tawF_YMq9uNMIg-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="269.5" as="targetPoint" />
+            <mxPoint x="270" y="270" as="sourcePoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-18" value="name, url" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="299" y="223" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="LzYgS3tawF_YMq9uNMIg-23">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-23" value="&lt;pre style=&quot;background-color:#2b2b2b;color:#a9b7c6;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:9.8pt;&quot;&gt;&lt;span style=&quot;color:#bbb529;&quot;&gt;@GetMapping&lt;/span&gt;(&lt;span style=&quot;color:#6a8759;&quot;&gt;&quot;/list-images&quot;&lt;/span&gt;)&lt;br&gt;&lt;span style=&quot;color:#cc7832;&quot;&gt;public &lt;/span&gt;ResponseEntity&amp;lt;List&amp;lt;ImageInfo&amp;gt;&amp;gt; &lt;span style=&quot;color:#ffc66d;&quot;&gt;listImages&lt;/span&gt;()&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="230" width="430" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-25" value="&lt;pre style=&quot;background-color: rgb(43, 43, 43); font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace; font-size: 9.8pt;&quot;&gt;&lt;font color=&quot;#ffffff&quot;&gt;&amp;lt;img src= &quot;&quot;&amp;gt;&lt;/font&gt;&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="70" y="332" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-27" value="&lt;pre style=&quot;background-color:#2b2b2b;color:#a9b7c6;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:9.8pt;&quot;&gt;&lt;span style=&quot;color:#bbb529;&quot;&gt;@GetMapping&lt;/span&gt;(&lt;span style=&quot;color:#6a8759;&quot;&gt;&quot;/upload/{filename:&lt;/span&gt;&lt;span style=&quot;color:#6a8759;background-color:#364135;&quot;&gt;.+&lt;/span&gt;&lt;span style=&quot;color:#6a8759;&quot;&gt;}&quot;&lt;/span&gt;)&lt;br&gt;&lt;span style=&quot;color:#cc7832;&quot;&gt;public &lt;/span&gt;ResponseEntity&amp;lt;Resource&amp;gt; &lt;span style=&quot;color:#ffc66d;&quot;&gt;getImage&lt;/span&gt;(&lt;span style=&quot;color:#bbb529;&quot;&gt;@PathVariable &lt;/span&gt;String filename) {&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="310" width="560" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="LzYgS3tawF_YMq9uNMIg-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="LzYgS3tawF_YMq9uNMIg-27">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="360" as="targetPoint" />
+            <mxPoint x="500" y="346" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="320" y="360" />
+              <mxPoint x="320" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
