@@ -1,13 +1,13 @@
 const fileInput = document.getElementById('fileInput');
 const previewImage = document.getElementById('preview');
-let baseURL = "http://localhost:8080/"
+let baseURL = "http://localhost:8080/file-upload/"
 let filename;
 
 loadAndDisplayImages();
 
 resetForm();
 
-function resetForm(){
+function resetForm() {
     fileInput.value = '';
     previewImage.style.display = 'none';
     $('#progressBar').width(0);
@@ -49,7 +49,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: baseURL + 'file-upload/upload',
+            url: baseURL + 'upload',
             type: 'POST',
             data: formData,
             processData: false,
@@ -84,21 +84,23 @@ $(document).ready(function () {
 // Function to load and display images
 function loadAndDisplayImages() {
     $.ajax({
-        url: baseURL + 'file-upload/list-images',
+        url: baseURL + 'list-images',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
             const imageTable = $('#image-table');
             imageTable.empty();
-            data.forEach(function (image, index) {
+
+            console.log(data)
+            data.forEach(function (imageName, index) {
                 const newRow = `
                         <tr>
                             <th scope="row">${index + 1}</th>
-                            <td>${image.name}</td>
-                            <td><img src= "http://localhost:8080/file-upload/upload/${image.name}" alt="Image" style="max-width: 100px;"></td>
+                            <td>${imageName}</td>
+                            <!--get image one by one from server-->
+                           <td><img src= "${baseURL+imageName}" alt="Image" style="max-width: 100px;"></td>
                         </tr>
                     `;
-
                 imageTable.append(newRow);
             });
         },
